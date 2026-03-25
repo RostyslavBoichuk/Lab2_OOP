@@ -1,0 +1,18 @@
+name: Deploy Doxygen Documentation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Deploy Doxygen documentation
+        uses: DenverCoder1/doxygen-github-pages-action@v1.4.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          doxyfile-path: Doxyfile
